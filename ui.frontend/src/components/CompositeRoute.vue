@@ -78,28 +78,32 @@
     setup(props, context) {
       // console.log('CompositeRoute properties: ', props);
       // console.log('CompositeRoute attributes: ', context.attrs);
+    },
+    computed: {
+      displayPage() {
+        let displayPage = false;
 
-      let displayPage = false;
-      if (props.cqPath) {
-        const routePath = `${props.cqPath}.html`;
-        const router = useRouter();
-        router.addRoute({
-          path: routePath,
-          component: Page,
-          props: {
-            cqPath: props.cqPath,
-            cqItems: props.cqItems,
-            cqItemsOrder: props.cqItemsOrder,
-            cqChildren: props.cqChildren,
-            componentMapping: props.componentMapping,
-            cssClassNames: props.cssClassNames,
-          },
-        });
-      } else {
-        displayPage = true;
-      }
+        if (this.cqPath) {
+          const routePath = `${this.cqPath}.html`;
+          const router = useRouter();
+          router.addRoute({
+            path: routePath,
+            component: Page,
+            props: {
+              cqPath: this.cqPath,
+              cqItems: this.cqItems,
+              cqItemsOrder: this.cqItemsOrder,
+              cqChildren: this.cqChildren,
+              componentMapping: this.componentMapping,
+              cssClassNames: this.cssClassNames,
+            },
+          });
+        } else {
+          displayPage = true;
+        }
 
-      return { displayPage };
+        return displayPage;
+      },
     },
   });
 </script>

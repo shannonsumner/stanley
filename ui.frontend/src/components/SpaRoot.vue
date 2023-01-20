@@ -1,5 +1,5 @@
 <template>
-  <div :key="location">
+  <div>
     <router-view></router-view>
     <component
       :is="childPage"
@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent, nextTick, PropType, ref, watchEffect } from 'vue';
+  import { defineComponent, nextTick, PropType, watchEffect } from 'vue';
   import { Model } from '@adobe/aem-spa-page-model-manager';
   import { ComponentMapping } from '@adobe/aem-spa-component-mapping';
   import Utils from '@/utils/Utils';
@@ -42,30 +42,20 @@
     },
     setup(props) {
       // console.log('SpaRoot properties: ', props);
-
-      const location = ref(props.locationPathname);
-
       const router = useRouter();
 
-      router.afterEach(async (to, from, failure) => {
-        if (to.path !== from.path) {
-          location.value = to.path;
-        }
-      });
       watchEffect(async () => {
         await nextTick();
         const routes: string[] = [];
         router.getRoutes().forEach((route) => {
           routes.push(route.path);
         });
-        if (routes.includes(location.value)) {
-          await router.replace(location.value);
+        if (routes.includes(props.locationPathname)) {
+          await router.replace(props.locationPathname);
         } else {
           await router.replace('/404');
         }
       });
-
-      return { location };
     },
     computed: {
       childPages() {
