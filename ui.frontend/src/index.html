@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="icon" href="/favicon.ico" />
+    <title>Stanley</title>
+
+    <!-- AEM page model -->
+    <meta
+      property="cq:pagemodel_root_url"
+      content="/content/stanley/us/en.model.json"
+    />
+
+    <!-- AEM Base ClientLib -->
+    <link
+      rel="stylesheet"
+      href="/etc.clientlibs/stanley/clientlibs/clientlib-base.css"
+      type="text/css"
+    />
+    <script>
+      window.environment = 'development';
+      if (
+        location.pathname === '/'
+      ) {
+        location.href = '/content/stanley/us/en/home.html';
+      }
+    </script>
+  </head>
+
+  <body class="page basicpage">
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="spa-root"></div>
+  </body>
+</html>

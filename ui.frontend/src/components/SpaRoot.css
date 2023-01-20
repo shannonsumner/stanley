@@ -1,0 +1,75 @@
+:root {
+  --stanley-color-davys-grey: #555;
+  --stanley-color-white: #fff;
+  --stanley-color-anti-flash-white: #f2f2f2;
+  --stanley-header-menu-border-color: #1abc9c;
+  --stanley-header-menu-block-size: auto;
+  --stanley-link-color: inherit;
+  --stanley-link-text-transform: none;
+  --stanley-size-1x: 8px;
+  --stanley-size-2x: calc(var(--stanley-size-1x) * 2);
+  --stanley-size-3x: calc(var(--stanley-size-1x) * 3);
+  --stanley-size-4x: calc(var(--stanley-size-1x) * 4);
+  --stanley-size-5x: calc(var(--stanley-size-1x) * 5);
+  --stanley-size-6x: calc(var(--stanley-size-1x) * 6);
+  --stanley-size-7x: calc(var(--stanley-size-1x) * 7);
+  --stanley-size-8x: calc(var(--stanley-size-1x) * 8);
+  --stanley-size-9x: calc(var(--stanley-size-1x) * 9);
+  --stanley-size-10x: calc(var(--stanley-size-1x) * 10);
+  --stanley-size-11x: calc(var(--stanley-size-1x) * 11);
+  --stanley-size-12x: calc(var(--stanley-size-1x) * 12);
+}
+
+@font-face {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 400;
+  src:
+    local(''),
+    url('../resources/fonts/montserrat-v25-latin-regular.woff2') format('woff2'),
+    url('../resources/fonts/montserrat-v25-latin-regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 700;
+  src:
+    local(''),
+    url('../resources/fonts/montserrat-v25-latin-700.woff2') format('woff2'),
+    url('../resources/fonts/montserrat-v25-latin-700.woff') format('woff');
+}
+
+body {
+  --stanley-link-hover-color: var(--stanley-link-color);
+
+  background-color: var(--stanley-color-white);
+  color: var(--stanley-color-davys-grey);
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  margin-block: 0;
+  margin-inline: 0;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font: inherit;
+}
+
+.stanley-link {
+  color: var(--stanley-link-color);
+  text-decoration: none;
+  text-transform: var(--stanley-link-text-transform);
+}
+
+.stanley-link:hover {
+  color: var(--stanley-link-hover-color);
+}
+
+.stanley-link--active {
+  color: #222;
+}

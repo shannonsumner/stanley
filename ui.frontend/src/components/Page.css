@@ -1,0 +1,63 @@
+.aem-AuthorLayer-Preview .aem-page > div > .aem-container,
+html:not([class*='aem-AuthorLayer-']) .aem-page > div > .aem-container {
+  display: grid;
+  gap: var(--stanley-size-3x) 0;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+  min-block-size: 100vh;
+}
+
+.aem-AuthorLayer-Preview .aem-page > div > .aem-Grid::before,
+.aem-AuthorLayer-Preview .aem-page > div > .aem-Grid::after,
+html:not([class*='aem-AuthorLayer-']) .aem-page > div > .aem-Grid::before,
+html:not([class*='aem-AuthorLayer-']) .aem-page > div > .aem-Grid::after {
+  content: normal;
+}
+
+.aem-page > div > .aem-container > .aem-GridColumn > .aem-container {
+  inline-size: 100%;
+  margin-block: 0;
+  margin-inline: auto;
+  max-inline-size: 1024px;
+}
+
+.aem-page > div > .aem-container > .aem-GridColumn:first-child {
+  background-color: #1abc9c;
+  border: 1px solid #16a085;
+  padding-block-end: var(--stanley-size-4x);
+  padding-block-start: var(--stanley-size-4x);
+}
+
+.aem-page > div > .aem-container > .aem-GridColumn:last-child,
+[data-cq-data-path$='/jcr:content/root/experiencefragment-footer']:not(.aem-container) {
+  background-color: #2f2f2f;
+  color: #fff;
+  padding-block-end: var(--stanley-size-4x);
+  padding-block-start: var(--stanley-size-4x);
+}
+
+.aem-page > div > .aem-container > .aem-GridColumn:nth-child(2) > .aem-container > .aem-GridColumn {
+  padding-inline: 12px;
+}
+
+.aem-page > div > .aem-container > .aem-GridColumn:nth-child(2) > .aem-container > .aem-GridColumn:first-child {
+  padding-inline-start: 0;
+}
+
+.aem-page > div > .aem-container > .aem-GridColumn:nth-child(2) > .aem-container > .aem-GridColumn:last-child {
+  padding-inline-end: 0;
+}
+
+.aem-page > div > .aem-container > .aem-GridColumn:nth-child(2) > .aem-container > .aem-GridColumn > .aem-container {
+  background-color: var(--stanley-color-anti-flash-white);
+}
+
+.aem-page > div > .aem-container > .aem-GridColumn:nth-child(2) > .aem-container > .aem-GridColumn > .aem-container > .aem-GridColumn {
+  padding-block: var(--stanley-size-2x);
+  padding-inline: var(--stanley-size-2x);
+}
+
+[data-cq-data-path$='/jcr:content/root/experiencefragment-footer'] .new,
+[data-cq-data-path$='/jcr:content/root/experiencefragment-header'] .new {
+  display: none;
+}

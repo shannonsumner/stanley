@@ -1,0 +1,62 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true
+  },
+  "extends": [
+    "airbnb",
+    "plugin:import/errors",
+    "plugin:vue/vue3-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
+  "parser": "vue-eslint-parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 2022,
+    "sourceType": "module",
+    "extraFileExtensions": [".vue"],
+    "parser": "@typescript-eslint/parser"
+  },
+  "plugins": ["import", "vue", "@typescript-eslint", "prettier"],
+  "rules": {
+    "import/extensions": [2, "ignorePackages", { "tsx": "never", "ts": "never" }],
+    "import/prefer-default-export": 0,
+    "max-classes-per-file": [1],
+    "no-console": [
+      1,
+      {
+        "allow": ["error", "warn", "info"]
+      }
+    ],
+    "no-param-reassign": [
+      2,
+      {
+        "props": false
+      }
+    ],
+    "no-plusplus": [
+      2,
+      {
+        "allowForLoopAfterthoughts": true
+      }
+    ],
+    "prettier/prettier": ["error"],
+    "@typescript-eslint/no-empty-function": 0,
+    "@typescript-eslint/ban-ts-comment": "off",
+    "vue/script-indent": ["error", 2, { "baseIndent": 1 }]
+  },
+  "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
+    "import/resolver": {
+      "typescript": {
+        "alwaysTryTypes": true
+      }
+    }
+  }
+}

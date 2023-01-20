@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workspaceFilter version="1.0">
+    <filter root="/apps/stanley/clientlibs"/>
+    <filter root="/apps/stanley/components"/>
+    <filter root="/apps/stanley/i18n"/>
+</workspaceFilter>
