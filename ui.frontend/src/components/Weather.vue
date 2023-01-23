@@ -1,5 +1,8 @@
 <template>
-  <div v-if="typeof apiResponse.weather !== 'undefined'" class="weather-widget">
+  <div
+    v-if="typeof apiResponse.weather !== 'undefined' && apiId"
+    class="weather-widget"
+  >
     <img
       :alt="apiResponse.weather[0].main"
       :src="
@@ -117,7 +120,7 @@
       </div>
     </div>
   </div>
-  <LoadingSpinner v-else />
+  <LoadingSpinner v-else-if="apiId" />
 </template>
 
 <script lang="ts">
@@ -133,9 +136,16 @@
       LoadingSpinner,
     },
     inheritAttrs: false,
-    setup() {
+    props: {
+      apiId: {
+        type: String,
+        required: true,
+      },
+    },
+    setup(props) {
       const apiResponse = ref({});
-      const apiId = 'b310c67e700e8a73d6a94507160c3595';
+      // eslint-disable-next-line vue/no-setup-props-destructure
+      const { apiId } = props;
 
       const requestWeather = async (longitude: number, latitude: number) => {
         const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiId}`;

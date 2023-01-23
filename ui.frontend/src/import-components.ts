@@ -77,6 +77,14 @@ const AemHeaderConfig = {
   },
 };
 
+const WeatherConfig = {
+  emptyLabel: 'Weather',
+
+  isEmpty(props: any) {
+    return props.apiId == null || props.apiId.trim().length === 0;
+  },
+};
+
 MapTo('stanley/components/page')(CompositeRoute);
 
 MapTo('stanley/components/experiencefragment')(
@@ -99,7 +107,7 @@ MapTo('stanley/components/text')(AemText, TextEditConfig);
 MapTo('stanley/components/image')(AemImage as Component, ImageEditConfig);
 MapTo('stanley/components/title')(AemTitle as Component, TitleEditConfig);
 MapTo('stanley/components/carousel-widget')(Carousel as Component);
-MapTo('stanley/components/weather')(Weather as Component);
+MapTo('stanley/components/weather')(Weather as Component, WeatherConfig);
 MapTo('stanley/components/calendar')(Calendar as Component);
 MapTo('stanley/components/navigation')(Navigation as Component);
 MapTo('stanley/components/header')(AemHeader as Component, AemHeaderConfig);
