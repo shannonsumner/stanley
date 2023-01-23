@@ -1,17 +1,23 @@
 <template>
   <header class="stanley-header" role="banner">
-    <router-link :to="homePage" class="stanley-link stanley-header__logo"
-      >Stanley</router-link
-    >
+    <AemAnchor
+      :href="homePage"
+      class="stanley-link stanley-header__logo"
+      text="Stanley"
+    />
   </header>
 </template>
 
 <script lang="ts">
   /* eslint-disable no-unsafe-optional-chaining */
   import { defineComponent } from 'vue';
+  import AemAnchor from '@/components/AemAnchor.vue';
 
   export default defineComponent({
     name: 'AemHeader',
+    components: {
+      AemAnchor,
+    },
     inheritAttrs: false,
     props: {
       homePage: {

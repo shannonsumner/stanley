@@ -1,6 +1,6 @@
 <template>
   <div :class="placeholderClassNames">
-    <div :data-text="listLabel" class="aem-AllowedComponent--list">
+    <div :data-text="listLabel" class="aem-AllowedComponent--title">
       <AllowedComponentPlaceholder
         v-for="component of components"
         :key="component.toString()"

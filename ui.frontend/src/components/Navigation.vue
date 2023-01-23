@@ -6,15 +6,15 @@
         :key="item"
         class="stanley-navigation__item stanley-navigation__item--level-0"
       >
-        <router-link
+        <AemAnchor
           :aria-current="`${item.active === true ? 'page' : false}`"
           :class="`stanley-link stanley-navigation__item-link ${
             item.active === true ? 'stanley-link--active' : ''
           }`"
+          :href="`${item.path}.html`"
+          :text="item.title"
           :title="item.title"
-          :to="`${item.path}.html`"
-          >{{ item.title }}
-        </router-link>
+        />
       </li>
     </ul>
   </nav>
@@ -23,9 +23,13 @@
 <script lang="ts">
   /* eslint-disable vue/multi-word-component-names */
   import { defineComponent } from 'vue';
+  import AemAnchor from '@/components/AemAnchor.vue';
 
   export default defineComponent({
     name: 'Navigation',
+    components: {
+      AemAnchor,
+    },
     inheritAttrs: false,
     props: {
       id: {

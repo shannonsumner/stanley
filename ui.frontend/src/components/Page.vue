@@ -95,7 +95,7 @@
       },
       containerProps() {
         const containerProps: { [key: string]: string } = {
-          class: classNames('aem-page'),
+          class: classNames('aem-page', this.cssClassNames),
         };
 
         if (this.isInEditor) {

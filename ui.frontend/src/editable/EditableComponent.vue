@@ -2,15 +2,10 @@
   <template v-if="disabledWcmMode">
     <component :is="wrappedComponent" v-bind="wrappedComponentProps" />
   </template>
-  <div
-    v-else-if="!isPage"
-    :class="className"
-    v-bind="{ ...editProps, ...containerProps }"
-  >
+  <div v-else :class="className" v-bind="{ ...editProps, ...containerProps }">
     <component :is="wrappedComponent" v-bind="wrappedComponentProps" />
     <div v-bind="emptyPlaceholderProps" />
   </div>
-  <component :is="wrappedComponent" v-else v-bind="wrappedComponentProps" />
 </template>
 
 <script lang="ts">
@@ -150,11 +145,6 @@
           };
         }
         return {};
-      },
-
-      isPage() {
-        const cqHierarchyType = this.componentProperties?.cqHierarchyType || '';
-        return cqHierarchyType === 'page';
       },
 
       wrappedComponentProps() {

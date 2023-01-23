@@ -57,12 +57,7 @@
           ...this.$attrs,
           pagePath: this.pagePath,
           itemPath: this.itemPath,
-          cqPath: Utils.getCQPath({
-            pagePath: this.pagePath,
-            itemPath: this.itemPath,
-            injectPropsOnInit: this.injectPropsOnInit,
-            cqPath: this.cqPath,
-          }),
+          cqPath: this.updatedCqPath,
           ...this.updatedProps,
         };
       },
@@ -114,22 +109,24 @@
             Utils.getCQPath({ pagePath, itemPath, injectPropsOnInit }));
 
         if (path) {
-          const data = await ModelManager.getData({
-            path,
-            forceReload: this.cqForceReload,
-          });
-          if (data && Object.keys(data).length > 0) {
-            Object.assign(this.updatedProps, Utils.modelToProps(data));
-            this.updateTime = new Date().getTime();
+          ModelManager.getData({ path, forceReload: this.cqForceReload })
+            .then((data) => {
+              if (data && Object.keys(data).length > 0) {
+                Object.assign(this.updatedProps, Utils.modelToProps(data));
+                this.updateTime = new Date().getTime();
 
-            // Fire event once component model has been fetched and rendered to enable editing on AEM
-            if (injectPropsOnInit && Utils.isInEditor()) {
-              PathUtils.dispatchGlobalCustomEvent(
-                'cq-async-content-loaded',
-                {}
-              );
-            }
-          }
+                // Fire event once component model has been fetched and rendered to enable editing on AEM
+                if (injectPropsOnInit && Utils.isInEditor()) {
+                  PathUtils.dispatchGlobalCustomEvent(
+                    'cq-async-content-loaded',
+                    {}
+                  );
+                }
+              }
+            })
+            .catch((error) => {
+              console.log(error);
+            });
         }
       },
       updateDataListener() {

@@ -29,7 +29,10 @@ const config: Config = {
     ],
   },
   transformIgnorePatterns: ['/node_modules/'],
-  watchPlugins: ['jest-watch-typeahead/filename', 'jest-watch-typeahead/testname'],
+  watchPlugins: [
+    'jest-watch-typeahead/filename',
+    'jest-watch-typeahead/testname',
+  ],
 };
 
 export default config;

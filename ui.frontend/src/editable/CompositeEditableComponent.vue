@@ -1,5 +1,8 @@
 <template>
-  <EditableComponent v-bind="computedProps" />
+  <EditableComponent
+    :wrapped-component="wrappedComponent"
+    v-bind="computedProps"
+  />
 </template>
 
 <script lang="ts">
@@ -44,7 +47,6 @@
             aemNoDecoration,
           },
           editConfig: defaultEditConfig,
-          wrappedComponent: this.wrappedComponent,
         };
       },
     },
