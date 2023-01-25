@@ -11,7 +11,7 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import DOMPurify from 'dompurify';
-  import Utils from '@/utils/Utils';
+  import { Utils } from 'aem-vue-editable-components';
 
   export default defineComponent({
     name: 'AemText',

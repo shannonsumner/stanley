@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils';
 import AemText from '@/components/AemText.vue';
-import Utils from '@/utils/Utils';
+import { Utils } from 'aem-vue-editable-components';
 
 describe('Text ->', () => {
   const RTE_EDIT_ELEMENT_DATA_ATTR = 'data-rte-editelement';

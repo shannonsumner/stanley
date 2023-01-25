@@ -4,14 +4,15 @@ import { Constants, ModelManager } from '@adobe/aem-spa-page-model-manager';
 import LocalDevModelClient from '@/config/LocalDevModelClient';
 import NotFound from '@/components/NotFound.vue';
 import SpaRoot from '@/components/SpaRoot.vue';
-import CompositeModelProvider from '@/editable/CompositeModelProvider.vue';
-import environment from '@/environment.json';
 import '@/import-components';
+import { CompositeModelProvider } from 'aem-vue-editable-components';
+import environment from '@/environment.json';
 import '@/favicon.ico';
 
 declare global {
   interface Window {
     environment: string;
+    ModelManager: typeof ModelManager;
   }
 }
 let environmentVariables = environment?.dev || {};
@@ -49,6 +50,7 @@ const router = createRouter({
 
 document.addEventListener('DOMContentLoaded', () => {
   ModelManager.initialize(modelManagerOptions).then((pageModel) => {
+    window.ModelManager = ModelManager;
     const app = createApp(CompositeModelProvider, {
       wrappedComponent: SpaRoot,
       cqChildren: pageModel[Constants.CHILDREN_PROP],

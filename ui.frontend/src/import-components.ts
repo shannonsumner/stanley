@@ -1,8 +1,4 @@
-import { MapTo } from '@/editable/ComponentMapping';
 import CompositeRoute from '@/components/CompositeRoute.vue';
-import Container from '@/components/Container.vue';
-import ResponsiveGrid from '@/components/ResponsiveGrid.vue';
-import AllowedComponentsContainer from '@/components/AllowedComponentsContainer.vue';
 import Carousel from '@/components/Carousel.vue';
 import Weather from '@/components/Weather.vue';
 import Calendar from '@/components/Calendar.vue';
@@ -12,6 +8,12 @@ import AemText from '@/components/AemText.vue';
 import AemTitle from '@/components/AemTitle.vue';
 import AemHeader from '@/components/AemHeader.vue';
 import { Component } from 'vue';
+import {
+  AllowedComponentsContainer,
+  Container,
+  MapTo,
+  ResponsiveGrid,
+} from 'aem-vue-editable-components';
 
 const ExperienceFragmentVariationConfig = {
   emptyLabel: 'Experience Fragment',

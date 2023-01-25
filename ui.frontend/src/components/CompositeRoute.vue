@@ -12,11 +12,9 @@
 
 <script lang="ts">
   import { defineComponent, PropType } from 'vue';
-  import Page from '@/components/Page.vue';
-  import { ComponentMapping } from '@adobe/aem-spa-component-mapping';
   import { Model } from '@adobe/aem-spa-page-model-manager';
   import { useRouter } from 'vue-router';
-  import Utils from '@/utils/Utils';
+  import { ComponentMapping, Page, Utils } from 'aem-vue-editable-components';
 
   interface PageModel extends Model {
     ':type': string;

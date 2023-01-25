@@ -12,8 +12,7 @@
 <script lang="ts">
   import { defineComponent, nextTick, PropType, watchEffect } from 'vue';
   import { Model } from '@adobe/aem-spa-page-model-manager';
-  import { ComponentMapping } from '@adobe/aem-spa-component-mapping';
-  import Utils from '@/utils/Utils';
+  import { ComponentMapping, Utils } from 'aem-vue-editable-components';
   import { useRouter } from 'vue-router';
 
   interface PageModel extends Model {
@@ -67,4 +66,5 @@
 
 <style>
   @import 'SpaRoot.css';
+  @import 'Page.css';
 </style>
