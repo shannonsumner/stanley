@@ -19,6 +19,7 @@
       AemAnchor,
     },
     inheritAttrs: false,
+    inheritAttrs: false,
     props: {
       homePage: {
         type: String,
@@ -37,10 +38,10 @@
   }
 
   .stanley-header__logo {
-    --stanley-link-color: #fff;
-    --stanley-link-hover-color: #fff;
+    --stanley-link-color: #222;
+    --stanley-link-hover-color: #222;
 
-    color: #fff;
+    color: var(--stanley-link-color);
     display: block;
     font-size: 20px;
     font-weight: 700;

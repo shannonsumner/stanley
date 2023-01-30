@@ -54,6 +54,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const app = createApp(CompositeModelProvider, {
       wrappedComponent: SpaRoot,
       cqChildren: pageModel[Constants.CHILDREN_PROP],
+      cqItems: pageModel[Constants.ITEMS_PROP],
+      cqItemsOrder: pageModel[Constants.ITEMS_ORDER_PROP],
+      cqPath: pageModel[Constants.PATH_PROP],
       locationPathname: window.location.pathname,
     });
 

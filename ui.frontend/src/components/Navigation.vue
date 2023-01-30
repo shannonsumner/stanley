@@ -46,7 +46,7 @@
 
 <style>
   .stanley-navigation {
-    --stanley-link-color: #fff;
+    --stanley-link-color: #222;
     --stanley-link-hover-color: #222;
     --stanley-link-text-transform: uppercase;
 

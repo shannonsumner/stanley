@@ -1,19 +1,15 @@
-import CompositeRoute from '@/components/CompositeRoute.vue';
-import Carousel from '@/components/Carousel.vue';
-import Weather from '@/components/Weather.vue';
-import Calendar from '@/components/Calendar.vue';
+import AemContainer from '@/components/AemContainer.vue';
+import AemHeader from '@/components/AemHeader.vue';
 import AemImage from '@/components/AemImage.vue';
-import Navigation from '@/components/Navigation.vue';
 import AemText from '@/components/AemText.vue';
 import AemTitle from '@/components/AemTitle.vue';
-import AemHeader from '@/components/AemHeader.vue';
+import Calendar from '@/components/Calendar.vue';
+import Carousel from '@/components/Carousel.vue';
+import CompositeRoute from '@/components/CompositeRoute.vue';
+import Navigation from '@/components/Navigation.vue';
+import Weather from '@/components/Weather.vue';
 import { Component } from 'vue';
-import {
-  AllowedComponentsContainer,
-  Container,
-  MapTo,
-  ResponsiveGrid,
-} from 'aem-vue-editable-components';
+import { Container, MapTo, ResponsiveGrid } from 'aem-vue-editable-components';
 
 const ExperienceFragmentVariationConfig = {
   emptyLabel: 'Experience Fragment',
@@ -24,18 +20,8 @@ const ExperienceFragmentVariationConfig = {
 };
 
 const ResponsiveGridConfig = {
-  emptyLabel: 'ResponsiveGrid',
-
   isEmpty(props: any) {
     return props.cqItemsOrder && props.cqItemsOrder.length > 0;
-  },
-};
-
-const AllowedComponentsContainerConfig = {
-  emptyLabel: 'Container',
-
-  isEmpty(props: any) {
-    return !props || !props.cqItemsOrder || props.cqItemsOrder.length === 0;
   },
 };
 
@@ -99,12 +85,7 @@ MapTo('wcm/foundation/components/responsivegrid')(
   ResponsiveGridConfig
 );
 
-MapTo('stanley/components/container')(
-  AllowedComponentsContainer,
-  AllowedComponentsContainerConfig
-);
-
-// MapTo('stanley/components/container')(Container, ContainerConfig);
+MapTo('stanley/components/container')(AemContainer, ContainerConfig);
 MapTo('stanley/components/text')(AemText, TextEditConfig);
 MapTo('stanley/components/image')(AemImage as Component, ImageEditConfig);
 MapTo('stanley/components/title')(AemTitle as Component, TitleEditConfig);
