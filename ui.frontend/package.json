@@ -9,7 +9,7 @@
     "start:prod": "npm run build:prod && webpack serve --open --mode=\"production\"",
     "build": "npm run clean && npm run lint && npm run typecheck && webpack --mode=\"development\"",
     "build:prod": "npm run clean && npm run lint && npm run typecheck && webpack --mode=\"production\" && node ./clientlib.config.babel.mjs",
-    "clean": "rm -rf dist/",
+    "clean": "node ./clean.mjs",
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\" --quiet",
     "typecheck": "tsc --noEmit",
     "test": "jest --passWithNoTests --coverage",

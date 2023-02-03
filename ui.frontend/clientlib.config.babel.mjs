@@ -1,16 +1,10 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { URL } from 'url';
 import path from 'path';
 import clientlib from 'aem-clientlib-generator';
 
-import { readdirSync, promises as fsPromises } from 'fs';
+import { promises as fsPromises } from 'fs';
 
-const getDirectories = (source) =>
-  readdirSync(source, { withFileTypes: true })
-    .filter((dirent) => dirent.isDirectory())
-    .map((dirent) => dirent.name);
-
-const directoryName = new URL('.', import.meta.url).pathname;
+const directoryName = process.cwd();
 const context = path.join(directoryName, 'dist');
 const clientLibRoot = path.join(
   directoryName,
@@ -32,17 +26,16 @@ const libsBaseConfig = {
   jsProcessor: ['default:none', 'min:none'],
 };
 
-const componentResourcesPath = path.join(context, 'clientlibs', 'stanley.vue', 'resources');
-
 const updatevueResourcePath = async () => {
   try {
-    const contents = await fsPromises.readFile('./dist/clientlib-vue/vue.bundle.css', 'utf-8');
+    const bundleFile = path.join(context, 'clientlib-vue', 'vue.bundle.css');
+    const contents = await fsPromises.readFile(bundleFile, 'utf-8');
     const replaced = contents.replace(
       /..\/clientlibs\/clientlib-vue\/resources/gi,
       '../resources'
     );
 
-    await fsPromises.writeFile('./dist/clientlib-vue/vue.bundle.css', replaced);
+    await fsPromises.writeFile(bundleFile, replaced);
   } catch (err) {
     console.log(err);
   }
