@@ -5,11 +5,15 @@ import AemText from '@/components/AemText.vue';
 import AemTitle from '@/components/AemTitle.vue';
 import Calendar from '@/components/Calendar.vue';
 import Carousel from '@/components/Carousel.vue';
-import CompositeRoute from '@/components/CompositeRoute.vue';
 import Navigation from '@/components/Navigation.vue';
 import Weather from '@/components/Weather.vue';
 import { Component } from 'vue';
-import { Container, MapTo, ResponsiveGrid } from 'aem-vue-editable-components';
+import {
+  Container,
+  MapTo,
+  Page,
+  ResponsiveGrid,
+} from 'aem-vue-editable-components';
 
 const ExperienceFragmentVariationConfig = {
   emptyLabel: 'Experience Fragment',
@@ -73,7 +77,7 @@ const WeatherConfig = {
   },
 };
 
-MapTo('stanley/components/page')(CompositeRoute);
+MapTo('stanley/components/page')(Page);
 
 MapTo('stanley/components/experiencefragment')(
   Container,

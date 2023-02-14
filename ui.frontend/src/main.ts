@@ -1,11 +1,15 @@
-import { createApp, h } from 'vue';
+import { createApp } from 'vue';
 import { createRouter, createWebHistory } from 'vue-router';
 import { Constants, ModelManager } from '@adobe/aem-spa-page-model-manager';
 import LocalDevModelClient from '@/config/LocalDevModelClient';
 import NotFound from '@/components/NotFound.vue';
 import SpaRoot from '@/components/SpaRoot.vue';
 import '@/import-components';
-import { CompositeModelProvider } from 'aem-vue-editable-components';
+import {
+  ComponentMapping,
+  CompositeModelProvider,
+} from 'aem-vue-editable-components';
+import createPageRoutes from '@/router/createPageRoutes';
 import environment from '@/environment.json';
 import '@/favicon.ico';
 
@@ -30,27 +34,26 @@ if (environmentVariables.VUE_APP_PROXY_ENABLED) {
   );
 }
 
-const routes = [
-  { path: '/', redirect: '/content/stanley/us/en/home.html' },
-  { path: '/404', component: NotFound },
-  {
-    path: '/:pathMatch(.*)*',
-    component: {
-      render() {
-        return h('span');
-      },
-    },
-  },
-];
-
-const router = createRouter({
-  history: createWebHistory(),
-  routes,
-});
-
 document.addEventListener('DOMContentLoaded', () => {
   ModelManager.initialize(modelManagerOptions).then((pageModel) => {
     window.ModelManager = ModelManager;
+    const routes = [
+      { path: '/', redirect: '/content/stanley/us/en/home.html' },
+      { path: '/404', component: NotFound },
+    ];
+
+    const router = createRouter({
+      history: createWebHistory(),
+      // @ts-ignore
+      routes: [
+        ...routes,
+        ...createPageRoutes(
+          pageModel[Constants.CHILDREN_PROP]!,
+          new ComponentMapping()
+        ),
+      ],
+    });
+
     const app = createApp(CompositeModelProvider, {
       wrappedComponent: SpaRoot,
       cqChildren: pageModel[Constants.CHILDREN_PROP],
